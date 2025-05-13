@@ -5,6 +5,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.example.apirest.Model.ENUMS.enumsUsuario;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,6 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UsuariosModel {
     @Id
+    @JsonSerialize(using = ToStringSerializer.class)
     private ObjectId id;
     private enumsUsuario tipoUsuario;
     private String nombreCompleto;
