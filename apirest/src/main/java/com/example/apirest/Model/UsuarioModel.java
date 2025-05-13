@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UsuariosModel {
+public class UsuarioModel {
     @Id
     @JsonSerialize(using = ToStringSerializer.class)
     private ObjectId id;
