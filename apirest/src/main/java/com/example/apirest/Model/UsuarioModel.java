@@ -25,5 +25,5 @@ public class UsuarioModel {
     private String tipoDocumento;
     private String numeroDocumento;
     private datosContacto datosContacto;
-    private String direccionUnidadResidencial;
+    private DireccionUnidadResidencial direccionUnidadResidencial;
 }
