@@ -1,5 +1,5 @@
 package com.example.apirest.Service;
 
-public class UsuariosServiceImp {
+public interface IUsuarioService {
     
 }
