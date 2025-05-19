@@ -31,8 +31,10 @@ public class SolicitudServiceImp implements ISolicitudService{
 
     @Override
     public SolicitudModel actualizarSolicitud(ObjectId id, SolicitudModel solicitud) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'actualizarSolicitud'");
+        SolicitudModel solicitudExistente = buscarSolicitud(id);
+        solicitudExistente.setDescripcionDetallada(solicitud.getDescripcionDetallada());
+        solicitudExistente.setFechaUltimaActualizacion(new Date());
+        return solicitudRepository.save(solicitudExistente);
     }
 
     @Override

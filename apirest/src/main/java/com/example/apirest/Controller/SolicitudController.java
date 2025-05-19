@@ -21,7 +21,7 @@ import com.example.apirest.Service.ISolicitudService;
 public class SolicitudController {
     @Autowired ISolicitudService solicitudService;
 
-    @PostMapping("crearSolicitud    ")
+    @PostMapping("crearSolicitud")
     public ResponseEntity<String> crearSolicitud(@RequestBody SolicitudModel solicitud) {
         return new ResponseEntity<String> (solicitudService.crearSolicitud(solicitud), HttpStatus.CREATED);
     }
@@ -32,12 +32,12 @@ public class SolicitudController {
     }
 
     @PutMapping("{id}")
-    public SolicitudModel actualizarSolicitud(@PathVariable ObjectId id, @RequestBody SolicitudModel solicitud) {
-        
+    public ResponseEntity<SolicitudModel> actualizarSolicitud(@PathVariable ObjectId id, @RequestBody SolicitudModel solicitud) {
+        return new ResponseEntity<SolicitudModel>(solicitudService.actualizarSolicitud(id, solicitud), HttpStatus.OK);
     }
 
     @DeleteMapping("{id}")
-    public String eliminarSolicitud(@PathVariable String id) {
-        return solicitudService.eliminarSolicitud(new ObjectId(id));
+    public ResponseEntity<String> eliminarSolicitud(@PathVariable ObjectId id) {
+        return new ResponseEntity<String> (solicitudService.eliminarSolicitud(id), HttpStatus.OK);
     }
 }
