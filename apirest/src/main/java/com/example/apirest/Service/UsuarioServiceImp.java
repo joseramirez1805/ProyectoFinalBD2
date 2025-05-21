@@ -38,6 +38,9 @@ public class UsuarioServiceImp implements IUsuarioService {
     @Override
     public UsuarioModel actualizarUsuario (ObjectId id, UsuarioModel usuario){
         UsuarioModel usuarioABuscar = buscarUsuarioPorId(id);
+        if(usuarioABuscar == null){ 
+            throw new UsuarioYaExistente("No se encontro el usuario ");
+        }
         usuarioABuscar.setNombreCompleto(usuario.getNombreCompleto());
         usuarioABuscar.setDatosContacto(usuario.getDatosContacto());
         usuarioABuscar.setDireccionUnidadResidencial(usuario.getDireccionUnidadResidencial());
