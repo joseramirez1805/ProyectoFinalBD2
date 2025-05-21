@@ -31,7 +31,7 @@ public class SolicitudModel {
     private ObjectId idUsuarioRegistra;
     private String descripcionDetallada;
     private Date fechaCreacion; 
-    private estadoSolicitud estadoSolcitud;
+    private estadoSolicitud estadoSolicitud;
     private Date fechaUltimaActualizacion;
     private List<Evidencias> evidencias;
 }
