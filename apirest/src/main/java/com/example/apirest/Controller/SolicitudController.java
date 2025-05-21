@@ -17,7 +17,7 @@ import com.example.apirest.Model.SolicitudModel;
 import com.example.apirest.Service.ISolicitudService;
 
 @RestController
-@RequestMapping("/API/PQRS/Solicitud")
+@RequestMapping("/API/PQRS/Solicitud/")
 public class SolicitudController {
     @Autowired ISolicitudService solicitudService;
 
@@ -26,17 +26,17 @@ public class SolicitudController {
         return new ResponseEntity<String> (solicitudService.crearSolicitud(solicitud), HttpStatus.CREATED);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("Buscar/{id}")
     public ResponseEntity<SolicitudModel> buscarSolicitud(@PathVariable ObjectId id) {
         return new ResponseEntity<SolicitudModel>(solicitudService.buscarSolicitud(id), HttpStatus.OK);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("Actualizar/{id}")
     public ResponseEntity<SolicitudModel> actualizarSolicitud(@PathVariable ObjectId id, @RequestBody SolicitudModel solicitud) {
         return new ResponseEntity<SolicitudModel>(solicitudService.actualizarSolicitud(id, solicitud), HttpStatus.OK);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("Eliminar/{id}")
     public ResponseEntity<String> eliminarSolicitud(@PathVariable ObjectId id) {
         return new ResponseEntity<String> (solicitudService.eliminarSolicitud(id), HttpStatus.OK);
     }
