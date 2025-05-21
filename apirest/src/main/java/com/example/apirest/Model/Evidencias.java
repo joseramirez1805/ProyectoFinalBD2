@@ -11,6 +11,5 @@ import lombok.NoArgsConstructor;
 public class Evidencias {
     private String tipoArchivo;
     private String descripcion;
-    private Date fechaCarga;
-    private Date horaCarga;
+    private Date fechaHoraCarga;
 }
