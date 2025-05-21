@@ -63,7 +63,7 @@ public class UsuarioServiceImp implements IUsuarioService {
 
     @Override
     public UsuarioModel buscarUsuarioPorEmail(String email) {
-        Optional<UsuarioModel> usuario = usuarioRepository.findByEmail(email);
+        Optional<UsuarioModel> usuario = usuarioRepository.findByDatosContactoEmail(email);
         return usuario.orElse(null);
     }
 }

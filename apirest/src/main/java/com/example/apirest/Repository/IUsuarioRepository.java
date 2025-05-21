@@ -9,5 +9,5 @@ import com.example.apirest.Model.UsuarioModel;
 
 public interface IUsuarioRepository extends MongoRepository<UsuarioModel, ObjectId>{
     Optional<UsuarioModel> findByNumeroDocumento(String numeroDeDocumento);
-    Optional<UsuarioModel> findByEmail(String email);
+    Optional<UsuarioModel> findByDatosContactoEmail(String email); 
 }

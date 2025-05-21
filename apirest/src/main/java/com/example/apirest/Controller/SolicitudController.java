@@ -17,7 +17,7 @@ import com.example.apirest.Model.SolicitudModel;
 import com.example.apirest.Service.ISolicitudService;
 
 @RestController
-@RequestMapping("/API/PQRS/")
+@RequestMapping("/API/PQRS/Solicitud")
 public class SolicitudController {
     @Autowired ISolicitudService solicitudService;
 
