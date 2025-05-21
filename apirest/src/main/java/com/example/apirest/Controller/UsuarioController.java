@@ -27,17 +27,17 @@ public class UsuarioController {
         return new ResponseEntity<String>(usuarioService.crearUsuario(usuario),HttpStatus.CREATED);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("BUSCAR/{id}")
     public ResponseEntity<UsuarioModel> buscarUsuarioPorId(@PathVariable ObjectId id){
         return new ResponseEntity<UsuarioModel>(usuarioService.buscarUsuarioPorId(id),HttpStatus.OK);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("ACTUALIZAR/{id}")
     public ResponseEntity<UsuarioModel> actualizarUsuario(@PathVariable ObjectId id, @RequestBody UsuarioModel usuario){
         return new ResponseEntity<UsuarioModel>(usuarioService.actualizarUsuario(id, usuario),HttpStatus.OK);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("ELIMINAR/{id}")
     public ResponseEntity<String> eliminarUsuario(@PathVariable ObjectId id){
         return new ResponseEntity<String>(usuarioService.eliminarUsuario(id),HttpStatus.OK);
     }
