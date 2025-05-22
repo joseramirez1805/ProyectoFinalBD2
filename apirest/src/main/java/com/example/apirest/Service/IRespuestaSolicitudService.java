@@ -12,6 +12,6 @@ public interface IRespuestaSolicitudService {
     public SolicitudModel buscarSolicitud(ObjectId idSolicitud);
     public RespuestaSolicitudModel buscarRespuestaSolicitud(ObjectId id);
     public RespuestaSolicitudModel crearRespuestaSolicitud(RespuestaSolicitudModel respuesta);
-    public Replica hacerReplicaRespuestaSolicitud(RespuestaSolicitudModel replica);
-    public String calificarRespuesta(RespuestaSolicitudModel respuestaConCalificacion);
+    public Replica hacerReplicaRespuestaSolicitud(ObjectId id, RespuestaSolicitudModel replica);
+    public String calificarRespuesta(ObjectId id, RespuestaSolicitudModel respuestaConCalificacion);
 }

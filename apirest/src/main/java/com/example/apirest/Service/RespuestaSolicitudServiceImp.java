@@ -50,8 +50,9 @@ public class RespuestaSolicitudServiceImp implements IRespuestaSolicitudService 
     }
 
     @Override
-    public Replica hacerReplicaRespuestaSolicitud(RespuestaSolicitudModel replica) {
-        RespuestaSolicitudModel respuestaEncontrada = buscarRespuestaSolicitud(replica.getId());
+    public Replica hacerReplicaRespuestaSolicitud(ObjectId id,RespuestaSolicitudModel replica) {
+        System.out.println("Datos:" + replica);
+        RespuestaSolicitudModel respuestaEncontrada = buscarRespuestaSolicitud(id);
         if(respuestaEncontrada == null){    
             throw new RespuestaSolicitudNoEncontrada("No se encontro respuesta a la cual hacer responder");
         }
@@ -66,8 +67,8 @@ public class RespuestaSolicitudServiceImp implements IRespuestaSolicitudService 
     }
 
     @Override
-    public String calificarRespuesta(RespuestaSolicitudModel respuestaConCalificacion) {
-        RespuestaSolicitudModel respuestaEncontrada = buscarRespuestaSolicitud(respuestaConCalificacion.getId());
+    public String calificarRespuesta(ObjectId id,RespuestaSolicitudModel respuestaConCalificacion) {
+        RespuestaSolicitudModel respuestaEncontrada = buscarRespuestaSolicitud(id);
         UsuarioModel usuarioEncontrado = buscarUsuario(respuestaConCalificacion.getIdUsuario());
         if(usuarioEncontrado == null){
             throw new UsuarioYaExistente("No se encontro el usuario");

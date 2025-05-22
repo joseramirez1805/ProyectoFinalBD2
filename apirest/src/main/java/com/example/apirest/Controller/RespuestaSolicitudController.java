@@ -1,8 +1,10 @@
 package com.example.apirest.Controller;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,13 +25,13 @@ public class RespuestaSolicitudController {
         return new ResponseEntity<RespuestaSolicitudModel>(respuestaSolicitudRepositorio.crearRespuestaSolicitud(respuesta), HttpStatus.OK);
     }
 
-    @PostMapping("HACER-REPLICA")
-    public ResponseEntity<Replica> hacerReplicaRespuesta(@RequestBody RespuestaSolicitudModel replica){
-        return new ResponseEntity<Replica>(respuestaSolicitudRepositorio.hacerReplicaRespuestaSolicitud(replica), HttpStatus.OK);
+    @PostMapping("HACER-REPLICA/{id}")
+    public ResponseEntity<Replica> hacerReplicaRespuesta(@PathVariable ObjectId id,@RequestBody RespuestaSolicitudModel replica){
+        return new ResponseEntity<Replica>(respuestaSolicitudRepositorio.hacerReplicaRespuestaSolicitud(id,replica), HttpStatus.OK);
     }
 
-    @PostMapping("CALIFICAR-RESPUESTA")
-    public ResponseEntity<String> calificarRespuesta(@RequestBody RespuestaSolicitudModel respuestaConCalificacion){
-        return new ResponseEntity<String>(respuestaSolicitudRepositorio.calificarRespuesta(respuestaConCalificacion), HttpStatus.OK);
+    @PostMapping("CALIFICAR-RESPUESTA/{id}")
+    public ResponseEntity<String> calificarRespuesta(@PathVariable ObjectId id,@RequestBody RespuestaSolicitudModel respuestaConCalificacion){
+        return new ResponseEntity<String>(respuestaSolicitudRepositorio.calificarRespuesta(id,respuestaConCalificacion), HttpStatus.OK);
     }
 }

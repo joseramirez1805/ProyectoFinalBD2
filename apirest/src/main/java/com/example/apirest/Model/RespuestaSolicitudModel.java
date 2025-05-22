@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Document("RespuestaSolicitud")
+@Document("RespuestasSolicitud")
 public class RespuestaSolicitudModel {
     @Id
     @JsonSerialize(using = ToStringSerializer.class)
