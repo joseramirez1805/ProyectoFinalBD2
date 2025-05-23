@@ -9,4 +9,5 @@ public interface ISolicitudService {
     public SolicitudModel buscarSolicitud (ObjectId id);
     public SolicitudModel actualizarSolicitud(ObjectId id, SolicitudModel solicitud);
     public String eliminarSolicitud(ObjectId id);
+    public String validarSolicitud(ObjectId id);
 }

@@ -40,4 +40,9 @@ public class SolicitudController {
     public ResponseEntity<String> eliminarSolicitud(@PathVariable ObjectId id) {
         return new ResponseEntity<String> (solicitudService.eliminarSolicitud(id), HttpStatus.OK);
     }
+
+    @PutMapping("VALIDAR-SOLICITUD/{id}")
+    public ResponseEntity<String> validarSolicitud(@PathVariable ObjectId id){
+        return new ResponseEntity<String>(solicitudService.validarSolicitud(id), HttpStatus.OK);
+    }
 }

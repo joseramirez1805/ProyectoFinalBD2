@@ -6,7 +6,9 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.apirest.Excepciones.SolicitudNoEncontrada;
 import com.example.apirest.Model.SolicitudModel;
+import com.example.apirest.Model.ENUMS.estadoSolicitud;
 import com.example.apirest.Repository.ISolicitudRepository;
 
 @Service
@@ -45,5 +47,15 @@ public class SolicitudServiceImp implements ISolicitudService{
         return "La solicitud fue eliminada con éxito.";
     }
 
+    @Override
+    public String validarSolicitud(ObjectId id) {
+        SolicitudModel solicitudEncontrada = buscarSolicitud(id);
+        if(solicitudEncontrada == null){
+            throw new SolicitudNoEncontrada("No se encontro la solicitud");
+        }
+        solicitudEncontrada.setEstadoSolicitud(estadoSolicitud.Radicada);
+        solicitudRepository.save(solicitudEncontrada);
+        return "Solicitud radicada con exito";
+    }
     
 }

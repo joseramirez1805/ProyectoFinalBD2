@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.example.apirest.Excepciones.AministracionExistente;
 import com.example.apirest.Excepciones.NoEsAdministrador;
 import com.example.apirest.Excepciones.UsuarioNoEncontrado;
 
@@ -17,6 +18,11 @@ public class AdministradorControllerAdvice {
 
     @ExceptionHandler(NoEsAdministrador.class)
     public ResponseEntity<String> NoEsAdministrador(NoEsAdministrador mensaje){
+        return new ResponseEntity<String>(mensaje.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(AministracionExistente.class)
+    public ResponseEntity<String> administracionYaExiste(AministracionExistente mensaje){
         return new ResponseEntity<String>(mensaje.getMessage(), HttpStatus.UNAUTHORIZED);
     }
 }
