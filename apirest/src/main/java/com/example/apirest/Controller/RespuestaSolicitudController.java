@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,5 +34,10 @@ public class RespuestaSolicitudController {
     @PostMapping("CALIFICAR-RESPUESTA/{id}")
     public ResponseEntity<String> calificarRespuesta(@PathVariable ObjectId id,@RequestBody RespuestaSolicitudModel respuestaConCalificacion){
         return new ResponseEntity<String>(respuestaSolicitudRepositorio.calificarRespuesta(id,respuestaConCalificacion), HttpStatus.OK);
+    }
+
+    @PutMapping("CERRAR-SOLICITUD/{id}")
+    public ResponseEntity<String> cerrarSolicitud(@PathVariable ObjectId id){
+        return new ResponseEntity<String>(respuestaSolicitudRepositorio.cerrarSolicitud(id), HttpStatus.OK);
     }
 }

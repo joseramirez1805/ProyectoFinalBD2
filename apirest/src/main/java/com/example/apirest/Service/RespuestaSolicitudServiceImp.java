@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.apirest.Excepciones.RespuestaSolicitudNoEncontrada;
+import com.example.apirest.Excepciones.SolicitudCerrada;
 import com.example.apirest.Excepciones.SolicitudNoEncontrada;
 import com.example.apirest.Excepciones.UsuarioYaExistente;
 import com.example.apirest.Model.Replica;
@@ -52,6 +53,9 @@ public class RespuestaSolicitudServiceImp implements IRespuestaSolicitudService 
             throw new UsuarioYaExistente("No se encontro el usuario");
         }
         SolicitudModel solicitudEncontrada = buscarSolicitud(respuesta.getIdSolicitud());
+        if(solicitudEncontrada.getEstadoSolicitud() == estadoSolicitud.Cerrada){
+            throw new SolicitudCerrada("La solicitud fue cerrada, no puedes hacer una respuesta a esta solicitud");
+        }
         solicitudEncontrada.setEstadoSolicitud(estadoSolicitud.Resuelta);
         solicitudRepositorio.save(solicitudEncontrada);
         respuestaSolicitudRepositorio.save(respuesta);
@@ -92,6 +96,17 @@ public class RespuestaSolicitudServiceImp implements IRespuestaSolicitudService 
         respuestaEncontrada.setCalificacion(respuestaConCalificacion.getCalificacion());
         respuestaSolicitudRepositorio.save(respuestaEncontrada);
         return "Has hecho una calificacion a la respuesta hecha por: " + usuarioEncontrado.getNombreCompleto();
+    }
+
+    @Override
+    public String cerrarSolicitud(ObjectId id) {
+        SolicitudModel solicitudEcontrada = buscarSolicitud(id);
+        if(solicitudEcontrada == null){
+            throw new SolicitudNoEncontrada("No se encontro la solicitud");
+        }
+        solicitudEcontrada.setEstadoSolicitud(estadoSolicitud.Cerrada);
+        solicitudRepositorio.save(solicitudEcontrada);
+        return "La solicitud ha sido cerrada con exito";
     }
 
 }

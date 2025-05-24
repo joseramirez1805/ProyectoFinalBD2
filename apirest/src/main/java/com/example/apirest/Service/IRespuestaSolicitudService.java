@@ -14,4 +14,5 @@ public interface IRespuestaSolicitudService {
     public RespuestaSolicitudModel crearRespuestaSolicitud(RespuestaSolicitudModel respuesta);
     public Replica hacerReplicaRespuestaSolicitud(ObjectId id, RespuestaSolicitudModel replica);
     public String calificarRespuesta(ObjectId id, RespuestaSolicitudModel respuestaConCalificacion);
+    public String cerrarSolicitud(ObjectId id);
 }
