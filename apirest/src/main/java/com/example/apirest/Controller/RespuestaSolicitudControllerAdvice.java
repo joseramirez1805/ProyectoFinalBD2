@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.example.apirest.Excepciones.RespuestaSolicitudNoEncontrada;
 import com.example.apirest.Excepciones.SolicitudCerrada;
+import com.example.apirest.Excepciones.SolicitudNoEncontrada;
 
 @ControllerAdvice
 public class RespuestaSolicitudControllerAdvice {
@@ -17,6 +18,11 @@ public class RespuestaSolicitudControllerAdvice {
 
     @ExceptionHandler(SolicitudCerrada.class)
     public ResponseEntity<String> solicitudCerrada(SolicitudCerrada mensaje){
+        return new ResponseEntity<String>(mensaje.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(SolicitudNoEncontrada.class)
+    public ResponseEntity<String> SolicitudNoEncontrada(SolicitudNoEncontrada mensaje) {
         return new ResponseEntity<String>(mensaje.getMessage(), HttpStatus.UNAUTHORIZED);
     }
 }

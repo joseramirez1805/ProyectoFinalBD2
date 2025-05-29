@@ -43,6 +43,10 @@ public class UsuarioServiceImp implements IUsuarioService {
         }
         usuarioABuscar.setNombreCompleto(usuario.getNombreCompleto());
         usuarioABuscar.setDatosContacto(usuario.getDatosContacto());
+        UsuarioModel usuarioEncontradoEmail = buscarUsuarioPorEmail(usuarioABuscar.getDatosContacto().getEmail());
+        if(usuarioEncontradoEmail != null){
+            throw new UsuarioYaExistente("Ese email ya se encuentra registrado");
+        }
         usuarioABuscar.setDireccionUnidadResidencial(usuario.getDireccionUnidadResidencial());
         return usuarioRepository.save(usuarioABuscar);
     }
